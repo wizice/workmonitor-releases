@@ -2,31 +2,37 @@
 
 ## Latest Version: v1.4.0
 
-### Download
-- **Latest Release**: [work-monitor.exe](https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe)
-- **Version Info**: [version.json](https://github.com/wizice/workmonitor-releases/raw/master/updates/version.json)
+### Download Options
+
+#### ?? Windows Installer (Recommended)
+- **Download**: [work-monitor-setup.msi](https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi)
+- **Size**: 7.46 MB
+- **SHA256**: `7b2b7d19132ca0d7362ce5a7e99f5eb766283680111ad0ccb99c04de70f48907`
+
+#### ?? Portable Version (No Installation Required)
+- **Download**: [work-monitor.exe](https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe)
+- **Size**: 21.15 MB
+- **SHA256**: `ee612e14d8091917a646212160ae20254e8c6e628b20b62d00bfe621a5d862d2`
 
 ### Installation
+
 ```powershell
-# PowerShell에서 설치
+# Option 1: Install using MSI (Recommended)
+Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi" -OutFile "work-monitor-setup.msi"
+Start-Process msiexec.exe -ArgumentList "/i work-monitor-setup.msi" -Wait
+
+# Option 2: Download portable EXE
 Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe" -OutFile "work-monitor.exe"
 ```
 
-### Verification
-- **File Size**: 21.15 MB (22180864 bytes)
-- **SHA256**: `c89b6db3e421da054f7961996410087c8ecd55501fd1d809518388a1d5ec6175`
-- **Build Type**: Fresh build
-- **Version Type**: Minor
-- **Deployed**: 2025-07-16 03:23:59
-
-### Auto-Update URL
-Programs can check for updates using:
+### Auto-Update
+The application automatically checks for updates using:
 ```
 https://github.com/wizice/workmonitor-releases/raw/master/updates/version.json
 ```
 
 ### Version History
-- [v1.3.1](./releases/v1.3.1/) - [v1.4.0](./releases/v1.4.0/)
+- [v1.4.0](./releases/v1.4.0/) - [v1.3.1](./releases/v1.3.1/)
 
 ---
-*Last updated: 07/16/2025 03:23:59*
+*Last updated: 07/16/2025 04:08:28*
