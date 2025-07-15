@@ -1,14 +1,14 @@
 ﻿{
-    "changelog":  "Version 1.4.0\n- Existing build from 2025-07-16 01:56:17\n- Latest improvements and bug fixes",
+    "changelog":  "Version 1.4.0\n- Fresh build from 2025-07-16 03:23:59\n- Latest improvements and bug fixes",
     "version":  "1.4.0",
-    "checksum":  "63622a78cc03e1dfb3dc0f4792f8fe262e25ddeae3d188df4661d7fbe0e86e85",
+    "checksum":  "c89b6db3e421da054f7961996410087c8ecd55501fd1d809518388a1d5ec6175",
     "build_info":  {
-                       "build_type":  "Existing build",
-                       "deployed_at":  "2025-07-16 01:56:17",
-                       "version_type":  "Current",
-                       "built_at":  "2025-07-16 01:40:41"
+                       "build_type":  "Fresh build",
+                       "deployed_at":  "2025-07-16 03:23:59",
+                       "version_type":  "Minor",
+                       "built_at":  "2025-07-16 03:23:25"
                    },
     "mandatory":  false,
-    "download_url":  "https://github.com/wizice/workmonitor-release/raw/main/updates/work-monitor.exe",
-    "file_size":  22185984
+    "download_url":  "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe",
+    "file_size":  22180864
 }
