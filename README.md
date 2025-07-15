@@ -4,12 +4,12 @@
 
 ### Download Options
 
-#### ?? Windows Installer (Recommended)
+#### Windows Installer (Recommended)
 - **Download**: [work-monitor-setup.msi](https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi)
 - **Size**: 7.46 MB
 - **SHA256**: `7b2b7d19132ca0d7362ce5a7e99f5eb766283680111ad0ccb99c04de70f48907`
 
-#### ?? Portable Version (No Installation Required)
+####  Portable Version (No Installation Required)
 - **Download**: [work-monitor.exe](https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe)
 - **Size**: 21.15 MB
 - **SHA256**: `ee612e14d8091917a646212160ae20254e8c6e628b20b62d00bfe621a5d862d2`
