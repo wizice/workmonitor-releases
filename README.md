@@ -1,29 +1,32 @@
 ﻿# WorkMonitor Releases
 
-## Latest Version: v1.3.1
+## Latest Version: v1.4.0
 
 ### Download
-- **Latest Release**: [work-monitor.exe](https://github.com/wizice/workmonitor-releases/raw/main/updates/work-monitor.exe)
-- **Version Info**: [version.json](https://github.com/wizice/workmonitor-releases/raw/main/updates/version.json)
+- **Latest Release**: [work-monitor.exe](https://github.com/wizice/workmonitor-release/raw/main/updates/work-monitor.exe)
+- **Version Info**: [version.json](https://github.com/wizice/workmonitor-release/raw/main/updates/version.json)
 
 ### Installation
 ```powershell
-# PowerShell?먯꽌 ?ㅼ튂
-Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-releases/raw/main/updates/work-monitor.exe" -OutFile "work-monitor.exe"
+# PowerShell에서 설치
+Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-release/raw/main/updates/work-monitor.exe" -OutFile "work-monitor.exe"
 ```
 
 ### Verification
-- **File Size**: 22185984 bytes
-- **SHA256**: `f8941edb4cc2f2f5763f41a1e690f160d8d9d37e7bebb0b0dbec868b5bac42de`
+- **File Size**: 21.16 MB (22185984 bytes)
+- **SHA256**: `63622a78cc03e1dfb3dc0f4792f8fe262e25ddeae3d188df4661d7fbe0e86e85`
+- **Build Type**: Existing build
+- **Version Type**: Current
+- **Deployed**: 2025-07-16 01:56:17
 
 ### Auto-Update URL
 Programs can check for updates using:
 ```
-https://github.com/wizice/workmonitor-releases/raw/main/updates/version.json
+https://github.com/wizice/workmonitor-release/raw/main/updates/version.json
 ```
 
 ### Version History
-- [v1.3.1](./releases/v1.3.1/)
+- [v1.3.1](./releases/v1.3.1/) - [v1.4.0](./releases/v1.4.0/)
 
 ---
-*Last updated: 07/16/2025 00:39:35*
+*Last updated: 07/16/2025 01:56:17*

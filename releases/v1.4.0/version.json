@@ -1,0 +1,14 @@
+﻿{
+    "changelog":  "Version 1.4.0\n- Existing build from 2025-07-16 01:56:17\n- Latest improvements and bug fixes",
+    "version":  "1.4.0",
+    "checksum":  "63622a78cc03e1dfb3dc0f4792f8fe262e25ddeae3d188df4661d7fbe0e86e85",
+    "build_info":  {
+                       "build_type":  "Existing build",
+                       "deployed_at":  "2025-07-16 01:56:17",
+                       "version_type":  "Current",
+                       "built_at":  "2025-07-16 01:40:41"
+                   },
+    "mandatory":  false,
+    "download_url":  "https://github.com/wizice/workmonitor-release/raw/main/updates/work-monitor.exe",
+    "file_size":  22185984
+}
