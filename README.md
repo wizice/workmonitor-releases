@@ -1,18 +1,18 @@
 ﻿# WorkMonitor Releases
 
-## Latest Version: v1.4.0
+## Latest Version: v1.4.1
 
 ### Download Options
 
-#### Windows Installer (Recommended)
+####  Windows Installer (Recommended)
 - **Download**: [work-monitor-setup.msi](https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi)
-- **Size**: 7.46 MB
-- **SHA256**: `7b2b7d19132ca0d7362ce5a7e99f5eb766283680111ad0ccb99c04de70f48907`
+- **Size**: 7.34 MB
+- **SHA256**: `95feb1905a8850db687a77f99a81121307e0fd8984e08a0f8c71a3e0dbc5d51e`
 
-####  Portable Version (No Installation Required)
+#### Portable Version (No Installation Required)
 - **Download**: [work-monitor.exe](https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe)
-- **Size**: 21.15 MB
-- **SHA256**: `ee612e14d8091917a646212160ae20254e8c6e628b20b62d00bfe621a5d862d2`
+- **Size**: 20.97 MB
+- **SHA256**: `abd420cb3233d61c65ceb8496e0e7d7ebe5b3acf0407b3029db2990c94f0e2a9`
 
 ### Installation
 
@@ -32,7 +32,7 @@ https://github.com/wizice/workmonitor-releases/raw/master/updates/version.json
 ```
 
 ### Version History
-- [v1.4.0](./releases/v1.4.0/) - [v1.3.1](./releases/v1.3.1/)
+- [v1.4.1](./releases/v1.4.1/) - [v1.4.0](./releases/v1.4.0/) - [v1.3.1](./releases/v1.3.1/)
 
 ---
-*Last updated: 07/16/2025 04:08:28*
+*Last updated: 10/03/2025 08:10:14*
