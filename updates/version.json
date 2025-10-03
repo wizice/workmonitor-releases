@@ -1,19 +1,14 @@
-﻿{
-    "build_info":  {
-                       "build_type":  "Existing build",
-                       "deployed_at":  "2025-10-03 09:00:07",
-                       "version_type":  "Manual",
-                       "built_at":  "2025-10-03 08:59:41"
-                   },
-    "download_url":  "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe",
-    "mandatory":  false,
-    "file_size":  22092800,
-    "checksum":  "4619df615c12ba79e026b0e0239a5eefcd937bee6dd80cf055df9e6c0c13c17f",
-    "version":  "1.4.2",
-    "msi":  {
-                "download_url":  "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi",
-                "checksum":  "5d69384ac49e279005f38c4c6eb1f2c00b778b808c23ea3f88a2be6338d26987",
-                "file_size":  7712768
-            },
-    "changelog":  "Version 1.4.2\n- Existing build from 2025-10-03 09:00:07\n- Latest improvements and bug fixes"
+{
+  "version": "1.4.3",
+  "download_url": "https://github.com/wizice/workmonitor-releases/releases/download/v1.4.3/work-monitor.exe",
+  "sha256": "1968E650A2AE5F420A082A053853D1B5715E3A282CB0CA209758424A40D171FF",
+  "size": 22072320,
+  "release_date": "2025-01-03T00:00:00Z",
+  "release_notes": [
+    "✨ 사용자 프로필 PC 정보 표시 기능 추가",
+    "🔧 StatusPayload에 device_info 객체 추가로 프론트엔드 호환성 개선",
+    "📊 컴퓨터 이름, MAC 주소, IP 주소, 시리얼 번호, Device ID 표시",
+    "🐛 user-profile.js에서 PC 정보를 가져오지 못하던 문제 수정"
+  ],
+  "force_update": false
 }
