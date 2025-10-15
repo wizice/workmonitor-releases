@@ -1,19 +1,19 @@
 ﻿{
     "build_info":  {
                        "build_type":  "Existing build",
-                       "deployed_at":  "2025-10-03 08:10:13",
+                       "deployed_at":  "2025-10-16 05:46:56",
                        "version_type":  "Manual",
-                       "built_at":  "2025-10-03 08:06:58"
+                       "built_at":  "2025-10-14 14:46:16"
                    },
     "download_url":  "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe",
     "mandatory":  false,
-    "file_size":  21991936,
-    "checksum":  "abd420cb3233d61c65ceb8496e0e7d7ebe5b3acf0407b3029db2990c94f0e2a9",
+    "file_size":  22315008,
+    "checksum":  "8a88caef529c69bde542e567b41752427dd92f351d0e05a4b42815c05f480031",
     "version":  "1.4.1",
     "msi":  {
                 "download_url":  "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi",
-                "checksum":  "95feb1905a8850db687a77f99a81121307e0fd8984e08a0f8c71a3e0dbc5d51e",
-                "file_size":  7692288
+                "checksum":  "ed5aa6af9ad62833bc2ed158cbdd75835b498a9db64edd2324f865564c0486f4",
+                "file_size":  7737344
             },
-    "changelog":  "Version 1.4.1\n- Existing build from 2025-10-03 08:10:13\n- Latest improvements and bug fixes"
+    "changelog":  "Version 1.4.1\n- Existing build from 2025-10-16 05:46:56\n- Latest improvements and bug fixes"
 }

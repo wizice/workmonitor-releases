@@ -1,14 +1,19 @@
-{
-  "version": "1.4.3",
-  "download_url": "https://raw.githubusercontent.com/wizice/workmonitor-releases/master/updates/v1.4.3/work-monitor.exe",
-  "sha256": "701548A784BB17DECDA36EB963BE63F73D58FC678D7C17CCD1D9553DC81865EF",
-  "size": 22072320,
-  "release_date": "2025-01-03T00:00:00Z",
-  "release_notes": [
-    "✨ CloudSync 자동 동기화 기능 추가",
-    "🔄 5분마다 자동으로 Cloudflare에 데이터 전송",
-    "📊 실시간/일간/주간/월간 데이터 자동 동기화",
-    "🐛 Admin 대시보드에서 사용자 0명으로 표시되던 문제 수정"
-  ],
-  "force_update": false
+﻿{
+    "build_info":  {
+                       "build_type":  "Existing build",
+                       "deployed_at":  "2025-10-16 05:46:56",
+                       "version_type":  "Manual",
+                       "built_at":  "2025-10-14 14:46:16"
+                   },
+    "download_url":  "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe",
+    "mandatory":  false,
+    "file_size":  22315008,
+    "checksum":  "8a88caef529c69bde542e567b41752427dd92f351d0e05a4b42815c05f480031",
+    "version":  "1.4.1",
+    "msi":  {
+                "download_url":  "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi",
+                "checksum":  "ed5aa6af9ad62833bc2ed158cbdd75835b498a9db64edd2324f865564c0486f4",
+                "file_size":  7737344
+            },
+    "changelog":  "Version 1.4.1\n- Existing build from 2025-10-16 05:46:56\n- Latest improvements and bug fixes"
 }
