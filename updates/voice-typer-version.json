@@ -1,0 +1,8 @@
+{
+  "version": "1.5.0",
+  "download_url": "https://github.com/wizice/workmonitor-releases/raw/master/updates/voice-typer.exe",
+  "checksum": "38f8596975967b8d35957f36bea55542e2aaf76eade0b20d559909c315c56826",
+  "file_size": 3983360,
+  "changelog": "v1.5.0 - Gemini 2.5 Flash STT 엔진 추가, push-to-talk 핫키, 클립보드 복사",
+  "updated_at": "2026-03-13"
+}
