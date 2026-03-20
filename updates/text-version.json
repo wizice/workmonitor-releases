@@ -1,14 +1,14 @@
 {
-  "version": "1.5.0",
+  "version": "1.5.1",
   "download_url": "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text.exe",
-  "checksum": "5c9f39a8496bc2bf4bd14741655a6dcc7359e4c8b15042a2ad47f8b8fac211e8",
-  "file_size": 10024448,
+  "checksum": "4f9844a986c14385b6da48fd22134ff88a2d9c94b161175b369cfe8425c5dd6d",
+  "file_size": 10025472,
   "mandatory": false,
-  "changelog": "Version 1.5.0\n- text 모드 전용 자동 업그레이드 지원\n- taskkill 프로세스명 동적 감지\n- STT 음성 타이핑 핫키 지원",
+  "changelog": "Version 1.5.1\n- 자동 업그레이드 테스트 릴리즈",
   "build_info": {
     "build_type": "Release build",
     "deployed_at": "2026-03-21",
-    "version_type": "Manual",
+    "version_type": "Patch",
     "built_at": "2026-03-21"
   }
 }
