@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work Monitor 다운로드</title>
+<style>
+  :root { --primary: #2563eb; --bg: #f8fafc; --card: #fff; --border: #e2e8f0; --text: #1e293b; --muted: #64748b; --green: #16a34a; --orange: #ea580c; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+  .subtitle { color: var(--muted); margin-bottom: 2rem; }
+  .version-badge { display: inline-block; background: var(--primary); color: #fff; padding: 0.15rem 0.6rem; border-radius: 1rem; font-size: 0.85rem; font-weight: 600; margin-left: 0.5rem; vertical-align: middle; }
+  .tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 2px solid var(--border); }
+  .tab { padding: 0.75rem 1.5rem; cursor: pointer; border: none; background: none; font-size: 1rem; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+  .tab:hover { color: var(--text); }
+  .tab.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 600; }
+  .tab-content { display: none; padding-top: 1.5rem; }
+  .tab-content.active { display: block; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.2rem; }
+  .card h3 { font-size: 1.1rem; margin-bottom: 0.75rem; }
+  .download-btn { display: inline-block; background: var(--primary); color: #fff; text-decoration: none; padding: 0.6rem 1.5rem; border-radius: 0.5rem; font-weight: 600; font-size: 0.95rem; transition: background 0.2s; }
+  .download-btn:hover { background: #1d4ed8; }
+  .download-btn.secondary { background: #475569; }
+  .download-btn.secondary:hover { background: #334155; }
+  .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+  .oneliner { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.88rem; overflow-x: auto; position: relative; margin: 0.75rem 0; white-space: pre-wrap; word-break: break-all; }
+  .oneliner .comment { color: #64748b; }
+  .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; background: #334155; color: #e2e8f0; border: none; padding: 0.3rem 0.6rem; border-radius: 0.3rem; cursor: pointer; font-size: 0.8rem; }
+  .copy-btn:hover { background: #475569; }
+  .steps { counter-reset: step; list-style: none; }
+  .steps li { counter-increment: step; padding: 0.5rem 0 0.5rem 2.5rem; position: relative; }
+  .steps li::before { content: counter(step); position: absolute; left: 0; width: 1.8rem; height: 1.8rem; background: var(--primary); color: #fff; border-radius: 50%; text-align: center; line-height: 1.8rem; font-size: 0.85rem; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; }
+  th, td { padding: 0.5rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  .tag { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 0.25rem; font-size: 0.8rem; font-weight: 500; }
+  .tag-ok { background: #dcfce7; color: var(--green); }
+  .tag-partial { background: #fef3c7; color: var(--orange); }
+  .tag-no { background: #fee2e2; color: #dc2626; }
+  .changelog { background: #f1f5f9; padding: 1rem; border-radius: 0.5rem; font-size: 0.9rem; }
+  .changelog li { margin: 0.3rem 0; }
+  footer { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) { .tabs { flex-wrap: wrap; } .tab { flex: 1; text-align: center; padding: 0.6rem 0.5rem; font-size: 0.9rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Work Monitor <span class="version-badge">v1.5.1</span></h1>
+<p class="subtitle">PC 활동 모니터링 데몬 &mdash; Windows / Linux</p>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('linux')">Linux</button>
+  <button class="tab" onclick="switchTab('windows')">Windows</button>
+  <button class="tab" onclick="switchTab('info')">기능 안내</button>
+</div>
+
+<!-- ── Linux ────────────────────────────────────── -->
+<div id="tab-linux" class="tab-content active">
+
+<div class="card">
+  <h3>빠른 설치 (한 줄)</h3>
+  <div class="oneliner" id="cmd-quick"><span class="comment"># 설치 스크립트 다운로드 후 실행</span>
+curl -fsSL https://raw.githubusercontent.com/wizice/work-monitor/master/scripts/linux-install.sh | bash<button class="copy-btn" onclick="copyCmd('cmd-quick')">복사</button></div>
+  <p class="meta">바이너리 설치 + 설정 파일 생성 + systemd 서비스 등록을 자동으로 수행합니다.</p>
+</div>
+
+<div class="card">
+  <h3>수동 다운로드</h3>
+  <a class="download-btn" href="https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text-linux-x64">
+    work-monitor-text (Linux x86-64)
+  </a>
+  <p class="meta">15.2 MB &bull; ELF 64-bit &bull; libssl 의존 없음 (rustls)</p>
+
+  <div class="oneliner" id="cmd-manual"><span class="comment"># 수동 설치</span>
+curl -fsSL -o ~/.local/bin/work-monitor-text \
+  https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text-linux-x64
+chmod +x ~/.local/bin/work-monitor-text
+work-monitor-text --version<button class="copy-btn" onclick="copyCmd('cmd-manual')">복사</button></div>
+</div>
+
+<div class="card">
+  <h3>설치 후 설정</h3>
+  <ol class="steps">
+    <li><strong>input 그룹 추가</strong> (키보드/마우스 수집에 필요)<br>
+      <code>sudo usermod -aG input $USER</code> → 재로그인</li>
+    <li><strong>설정 파일 편집</strong> (Cloud Sync 사용 시)<br>
+      <code>nano ~/.local/share/WorkMonitor/cloud_sync_lite.json</code><br>
+      <span class="meta">worker_url, api_key 설정 → enabled: true</span></li>
+    <li><strong>서비스 시작 및 자동실행 등록</strong><br>
+      <code>systemctl --user enable --now work-monitor</code></li>
+    <li><strong>상태 확인</strong><br>
+      <code>systemctl --user status work-monitor</code><br>
+      <code>journalctl --user -u work-monitor -f</code></li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>시스템 요구사항</h3>
+  <table>
+    <tr><th>항목</th><th>요구사항</th></tr>
+    <tr><td>아키텍처</td><td>x86-64 (amd64)</td></tr>
+    <tr><td>OS</td><td>Ubuntu 20.04+, Debian 11+, CentOS 8+ 또는 동등</td></tr>
+    <tr><td>커널</td><td>4.15+ (evdev 지원)</td></tr>
+    <tr><td>의존 라이브러리</td><td>없음 (glibc 기본 포함분만 사용)</td></tr>
+    <tr><td>권한</td><td>input 그룹 (evdev 접근)</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>기능별 지원 현황 (Linux)</h3>
+  <table>
+    <tr><th>기능</th><th>상태</th></tr>
+    <tr><td>키보드/마우스 이벤트 수집 (evdev)</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>Cloud Sync (Cloudflare Workers)</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>Claude 세션 로그 동기화</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>MCP Bridge SSE 서버</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>텔레그램 채널 브릿지 (B모드)</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>호출벨 (콘솔 c 명령)</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>자동 업그레이드</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>systemd 서비스</td><td><span class="tag tag-ok">지원</span></td></tr>
+    <tr><td>호출벨 글로벌 핫키 (Ctrl+F1)</td><td><span class="tag tag-no">미지원</span> <span class="meta">Windows 전용</span></td></tr>
+    <tr><td>음성 타이핑 (STT)</td><td><span class="tag tag-no">미지원</span> <span class="meta">Windows 전용</span></td></tr>
+  </table>
+</div>
+</div>
+
+<!-- ── Windows ──────────────────────────────────── -->
+<div id="tab-windows" class="tab-content">
+
+<div class="card">
+  <h3>GUI 모드 (권장)</h3>
+  <a class="download-btn" href="https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi">
+    work-monitor-setup.msi
+  </a>
+  <a class="download-btn secondary" href="https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe" style="margin-left:0.5rem;">
+    Portable EXE
+  </a>
+  <p class="meta">MSI: 8.6 MB &bull; EXE: 25 MB &bull; Windows 10/11</p>
+</div>
+
+<div class="card">
+  <h3>Text 모드 (Headless)</h3>
+  <a class="download-btn" href="https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text.exe">
+    work-monitor-text.exe
+  </a>
+  <p class="meta">10 MB &bull; UI 없이 백그라운드 데몬으로 실행</p>
+
+  <div class="oneliner" id="cmd-win"><span class="comment"># PowerShell</span>
+Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text.exe" -OutFile "$env:LOCALAPPDATA\WorkMonitor\work-monitor-text.exe"<button class="copy-btn" onclick="copyCmd('cmd-win')">복사</button></div>
+</div>
+</div>
+
+<!-- ── 기능 안내 ──────────────────────────────────── -->
+<div id="tab-info" class="tab-content">
+
+<div class="card">
+  <h3>Work Monitor란?</h3>
+  <p>PC 활동(키보드/마우스)을 모니터링하여 근무 시간과 집중도를 추적하는 데몬 프로그램입니다.</p>
+  <ul style="margin-top:0.75rem; padding-left:1.2rem;">
+    <li>1분 간격 이벤트 수집, 10분 간격 클라우드 동기화</li>
+    <li>Claude 세션 로그 분석 및 AI 코칭</li>
+    <li>텔레그램 봇 연동 (원격 조회/제어)</li>
+    <li>자동 업그레이드 (시작 시 버전 체크)</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>v1.5.1 변경사항</h3>
+  <ul class="changelog">
+    <li>Linux headless 빌드 지원 (Tauri 의존 분리)</li>
+    <li>TLS 백엔드 rustls 전환 (libssl 의존 제거)</li>
+    <li>Linux 자동 업그레이드 지원</li>
+    <li>systemd 사용자 서비스 설치 스크립트</li>
+    <li>OS별 버전 매니페스트 자동 선택</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3>관련 링크</h3>
+  <table>
+    <tr><td>소스 코드</td><td><a href="https://github.com/wizice/work-monitor">github.com/wizice/work-monitor</a></td></tr>
+    <tr><td>릴리즈</td><td><a href="https://github.com/wizice/workmonitor-releases">github.com/wizice/workmonitor-releases</a></td></tr>
+    <tr><td>NadoCEO 플랫폼</td><td><a href="https://nadoceo.wizice.com">nadoceo.wizice.com</a></td></tr>
+    <tr><td>설치 가이드 (상세)</td><td><a href="https://github.com/wizice/work-monitor/blob/master/docs/Linux_%EB%B9%8C%EB%93%9C_%EC%8B%A4%ED%96%89_%EA%B0%80%EC%9D%B4%EB%93%9C_2026-03-12.md">Linux 빌드 가이드</a></td></tr>
+  </table>
+</div>
+</div>
+
+<footer>
+  Work Monitor &copy; wizice.com &bull; 최종 업데이트: 2026-03-24
+</footer>
+
+</div>
+
+<script>
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function copyCmd(id) {
+  const el = document.getElementById(id);
+  const text = el.textContent.replace('복사', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.querySelector('.copy-btn');
+    btn.textContent = '완료';
+    setTimeout(() => btn.textContent = '복사', 1500);
+  });
+}
+</script>
+</body>
+</html>
