@@ -155,6 +155,52 @@ Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-releases/raw/maste
 </div>
 </div>
 
+<!-- ── Claude Code ──────────────────────────────────── -->
+<div id="tab-claude" class="tab-content">
+
+<div class="card">
+  <h3>Claude Code로 자동 설치</h3>
+  <p>다른 리눅스 PC에서 Claude Code가 설치를 도와줍니다. Claude Code 터미널에 아래를 입력하세요:</p>
+  <div class="oneliner" id="cmd-claude"><span class="comment"># Claude Code에 입력</span>
+https://wizice.github.io/workmonitor-releases/install-spec.json 을 읽고 work-monitor를 이 리눅스 PC에 설치해줘<button class="copy-btn" onclick="copyCmd('cmd-claude')">복사</button></div>
+  <p class="meta">Claude Code가 설치 스펙(JSON)을 읽어 OS 환경에 맞게 단계별 설치를 진행합니다.</p>
+</div>
+
+<div class="card">
+  <h3>동작 방식</h3>
+  <ol class="steps">
+    <li><strong>스펙 읽기</strong> &mdash; Claude Code가 <a href="https://wizice.github.io/workmonitor-releases/install-spec.json">install-spec.json</a>을 WebFetch로 다운로드</li>
+    <li><strong>환경 판단</strong> &mdash; OS, 아키텍처를 확인하여 맞는 바이너리 URL 선택</li>
+    <li><strong>설치 실행</strong> &mdash; <code>install_steps</code>를 순서대로 실행 (바이너리, input 그룹, 설정, systemd)</li>
+    <li><strong>문제 해결</strong> &mdash; 에러 발생 시 <code>troubleshooting</code> 섹션 참조하여 자동 대응</li>
+  </ol>
+</div>
+
+<div class="card">
+  <h3>Claude Code가 아직 없다면</h3>
+  <div class="oneliner" id="cmd-cc-install"><span class="comment"># Claude Code 설치 (macOS / Linux / WSL)</span>
+curl -fsSL https://claude.ai/install.sh | bash<button class="copy-btn" onclick="copyCmd('cmd-cc-install')">복사</button></div>
+  <p class="meta">Node.js 불필요 &bull; 네이티브 바이너리 &bull; 자동 업데이트</p>
+  <table>
+    <tr><th>플랫폼</th><th>설치 명령</th></tr>
+    <tr><td>macOS / Linux / WSL</td><td><code>curl -fsSL https://claude.ai/install.sh | bash</code></td></tr>
+    <tr><td>Windows PowerShell</td><td><code>irm https://claude.ai/install.ps1 | iex</code></td></tr>
+    <tr><td>Homebrew (macOS)</td><td><code>brew install --cask claude-code</code></td></tr>
+  </table>
+  <p class="meta" style="margin-top:0.75rem;">설치 후 <code>claude</code> 입력하여 로그인 &rarr; 위의 설치 명령 입력</p>
+  <p class="meta">공식 문서: <a href="https://claude.ai/code">claude.ai/code</a></p>
+</div>
+
+<div class="card">
+  <h3>참조 파일</h3>
+  <table>
+    <tr><td>설치 스펙 (JSON)</td><td><a href="https://wizice.github.io/workmonitor-releases/install-spec.json">install-spec.json</a></td></tr>
+    <tr><td>설치 스크립트 (Shell)</td><td><a href="https://raw.githubusercontent.com/wizice/work-monitor/master/scripts/linux-install.sh">linux-install.sh</a></td></tr>
+    <tr><td>다운로드 페이지</td><td><a href="https://wizice.github.io/workmonitor-releases/download.html">download.html</a></td></tr>
+  </table>
+</div>
+</div>
+
 <!-- ── 기능 안내 ──────────────────────────────────── -->
 <div id="tab-info" class="tab-content">
 
@@ -190,16 +236,6 @@ Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-releases/raw/maste
   </table>
 </div>
 
-<div class="card">
-  <h3>Claude Code로 설치하기</h3>
-  <p>다른 기기에서 Claude Code가 설치를 도와줄 수 있습니다. Claude Code에 아래와 같이 요청하세요:</p>
-  <div class="oneliner" id="cmd-claude"><span class="comment"># Claude Code에 복사하여 입력</span>
-https://wizice.github.io/workmonitor-releases/install-spec.json 을 읽고 work-monitor를 이 리눅스 PC에 설치해줘<button class="copy-btn" onclick="copyCmd('cmd-claude')">복사</button></div>
-  <p class="meta">Claude Code가 설치 스펙(JSON)을 읽어 OS와 환경에 맞게 단계별 설치를 진행합니다.</p>
-  <table>
-    <tr><td>설치 스펙 (JSON)</td><td><a href="https://wizice.github.io/workmonitor-releases/install-spec.json">install-spec.json</a></td></tr>
-  </table>
-</div>
 </div>
 
 <footer>
