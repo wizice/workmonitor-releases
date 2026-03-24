@@ -1,0 +1,14 @@
+{
+  "version": "1.5.1",
+  "download_url": "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text-linux-x64",
+  "checksum": "a127e47872cfcdd4320b7d31b2df9e5a2102fb24cd1936de6561ac8c24a6e1f0",
+  "file_size": 15180592,
+  "mandatory": false,
+  "changelog": "Version 1.5.1 Linux\n- Tauri 의존성 분리 (headless 빌드)\n- rustls 전환 (libssl 의존 제거)\n- systemd 서비스 지원\n- 자동 업그레이드 Linux 지원",
+  "build_info": {
+    "build_type": "Release build",
+    "deployed_at": "2026-03-24",
+    "platform": "linux-x86_64",
+    "built_at": "2026-03-24"
+  }
+}
