@@ -55,6 +55,7 @@
 <div class="tabs">
   <button class="tab active" onclick="switchTab('linux')">Linux</button>
   <button class="tab" onclick="switchTab('windows')">Windows</button>
+  <button class="tab" onclick="switchTab('claude')">Claude Code</button>
   <button class="tab" onclick="switchTab('info')">기능 안내</button>
 </div>
 
@@ -186,6 +187,17 @@ Invoke-WebRequest -Uri "https://github.com/wizice/workmonitor-releases/raw/maste
     <tr><td>릴리즈</td><td><a href="https://github.com/wizice/workmonitor-releases">github.com/wizice/workmonitor-releases</a></td></tr>
     <tr><td>NadoCEO 플랫폼</td><td><a href="https://nadoceo.wizice.com">nadoceo.wizice.com</a></td></tr>
     <tr><td>설치 가이드 (상세)</td><td><a href="https://github.com/wizice/work-monitor/blob/master/docs/Linux_%EB%B9%8C%EB%93%9C_%EC%8B%A4%ED%96%89_%EA%B0%80%EC%9D%B4%EB%93%9C_2026-03-12.md">Linux 빌드 가이드</a></td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Claude Code로 설치하기</h3>
+  <p>다른 기기에서 Claude Code가 설치를 도와줄 수 있습니다. Claude Code에 아래와 같이 요청하세요:</p>
+  <div class="oneliner" id="cmd-claude"><span class="comment"># Claude Code에 복사하여 입력</span>
+https://wizice.github.io/workmonitor-releases/install-spec.json 을 읽고 work-monitor를 이 리눅스 PC에 설치해줘<button class="copy-btn" onclick="copyCmd('cmd-claude')">복사</button></div>
+  <p class="meta">Claude Code가 설치 스펙(JSON)을 읽어 OS와 환경에 맞게 단계별 설치를 진행합니다.</p>
+  <table>
+    <tr><td>설치 스펙 (JSON)</td><td><a href="https://wizice.github.io/workmonitor-releases/install-spec.json">install-spec.json</a></td></tr>
   </table>
 </div>
 </div>

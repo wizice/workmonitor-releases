@@ -1,0 +1,145 @@
+{
+  "name": "work-monitor",
+  "version": "1.5.1",
+  "description": "PC 활동 모니터링 데몬 (키보드/마우스 이벤트 수집, Cloud Sync, AI 코칭)",
+  "homepage": "https://wizice.github.io/workmonitor-releases/download.html",
+  "source": "https://github.com/wizice/work-monitor",
+  "updated_at": "2026-03-24",
+
+  "platforms": {
+    "linux-x64": {
+      "binary_url": "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text-linux-x64",
+      "binary_name": "work-monitor-text",
+      "file_size_mb": 15.2,
+      "checksum_sha256": "a127e47872cfcdd4320b7d31b2df9e5a2102fb24cd1936de6561ac8c24a6e1f0",
+      "install_script": "https://raw.githubusercontent.com/wizice/work-monitor/master/scripts/linux-install.sh",
+      "dependencies": [],
+      "system_requirements": {
+        "arch": "x86_64",
+        "os": "Ubuntu 20.04+ / Debian 11+ / CentOS 8+",
+        "kernel": "4.15+",
+        "ram_mb": 256
+      }
+    },
+    "windows-x64": {
+      "binary_url": "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text.exe",
+      "msi_url": "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-setup.msi",
+      "gui_url": "https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor.exe",
+      "binary_name": "work-monitor-text.exe",
+      "system_requirements": {
+        "os": "Windows 10/11",
+        "ram_mb": 256
+      }
+    }
+  },
+
+  "install_steps": {
+    "linux": {
+      "quick": {
+        "description": "설치 스크립트로 자동 설치 (바이너리 + 설정 + systemd 서비스)",
+        "command": "curl -fsSL https://raw.githubusercontent.com/wizice/work-monitor/master/scripts/linux-install.sh | bash"
+      },
+      "manual": [
+        {
+          "step": 1,
+          "title": "바이너리 다운로드 및 설치",
+          "commands": [
+            "mkdir -p ~/.local/bin",
+            "curl -fsSL -o ~/.local/bin/work-monitor-text https://github.com/wizice/workmonitor-releases/raw/master/updates/work-monitor-text-linux-x64",
+            "chmod +x ~/.local/bin/work-monitor-text"
+          ],
+          "verify": "work-monitor-text --version",
+          "note": "~/.local/bin 이 PATH에 포함되어 있어야 함. 없으면: export PATH=\"$HOME/.local/bin:$PATH\" 를 ~/.bashrc에 추가"
+        },
+        {
+          "step": 2,
+          "title": "input 그룹 추가 (evdev 키보드/마우스 접근 권한)",
+          "commands": [
+            "sudo usermod -aG input $USER"
+          ],
+          "verify": "groups | grep input",
+          "note": "sudo 필요. 적용하려면 재로그인 필수. 이 단계 없이도 프로그램은 실행되지만 이벤트 수집이 안 됨"
+        },
+        {
+          "step": 3,
+          "title": "설정 파일 생성",
+          "commands": [
+            "work-monitor-text --init-config"
+          ],
+          "config_path": "~/.local/share/WorkMonitor/cloud_sync_lite.json",
+          "config_fields": {
+            "enabled": { "default": false, "description": "Cloud Sync 활성화 (true로 변경 필요)" },
+            "worker_url": { "default": "", "description": "Cloudflare Workers URL (관리자에게 문의)" },
+            "api_key": { "default": "", "description": "API 인증 키 (관리자에게 문의)" },
+            "user_id": { "default": "hostname", "description": "이 PC의 고유 식별자" },
+            "sync_interval_minutes": { "default": 10, "description": "클라우드 전송 간격 (분)" }
+          },
+          "note": "Cloud Sync 없이 로컬 모드로도 실행 가능 (enabled: false 상태)"
+        },
+        {
+          "step": 4,
+          "title": "systemd 사용자 서비스 등록 (부팅 시 자동 실행)",
+          "commands": [
+            "mkdir -p ~/.config/systemd/user",
+            "cat > ~/.config/systemd/user/work-monitor.service << 'EOF'\n[Unit]\nDescription=Work Monitor - PC activity monitoring daemon\nAfter=network.target\n\n[Service]\nType=simple\nExecStart=%h/.local/bin/work-monitor-text\nRestart=on-failure\nRestartSec=10\nEnvironment=RUST_LOG=work_monitor=info\nTimeoutStopSec=5\nMemoryMax=256M\nCPUQuota=10%\n\n[Install]\nWantedBy=default.target\nEOF",
+            "systemctl --user daemon-reload",
+            "systemctl --user enable --now work-monitor",
+            "loginctl enable-linger $USER"
+          ],
+          "verify": "systemctl --user status work-monitor",
+          "note": "loginctl enable-linger 는 로그아웃 후에도 서비스가 유지되도록 함"
+        }
+      ],
+      "useful_commands": {
+        "status": "systemctl --user status work-monitor",
+        "logs": "journalctl --user -u work-monitor -f",
+        "restart": "systemctl --user restart work-monitor",
+        "stop": "systemctl --user stop work-monitor",
+        "uninstall_script": "curl -fsSL https://raw.githubusercontent.com/wizice/work-monitor/master/scripts/linux-install.sh | bash -s -- --uninstall",
+        "check_install": "curl -fsSL https://raw.githubusercontent.com/wizice/work-monitor/master/scripts/linux-install.sh | bash -s -- --status"
+      }
+    }
+  },
+
+  "features": {
+    "event_monitoring": { "linux": true, "windows": true, "description": "키보드/마우스 이벤트 수집" },
+    "cloud_sync": { "linux": true, "windows": true, "description": "Cloudflare Workers 클라우드 동기화" },
+    "session_log_sync": { "linux": true, "windows": true, "description": "Claude 세션 로그 동기화" },
+    "call_bell_console": { "linux": true, "windows": true, "description": "호출벨 (콘솔 c 명령)" },
+    "call_bell_hotkey": { "linux": false, "windows": true, "description": "호출벨 글로벌 핫키 (Ctrl+F1)" },
+    "mcp_bridge": { "linux": true, "windows": true, "description": "MCP Bridge SSE 서버" },
+    "telegram_bridge": { "linux": true, "windows": true, "description": "텔레그램 채널 브릿지 (B모드)" },
+    "auto_upgrade": { "linux": true, "windows": true, "description": "자동 업그레이드" },
+    "systemd_service": { "linux": true, "windows": false, "description": "systemd 서비스 자동실행" },
+    "stt_voice_typer": { "linux": false, "windows": true, "description": "음성 타이핑 (STT)" }
+  },
+
+  "troubleshooting": [
+    {
+      "symptom": "evdev 입력 장치를 찾을 수 없음",
+      "cause": "input 그룹 미소속",
+      "fix": "sudo usermod -aG input $USER && 재로그인"
+    },
+    {
+      "symptom": "command not found: work-monitor-text",
+      "cause": "~/.local/bin 이 PATH에 없음",
+      "fix": "echo 'export PATH=\"$HOME/.local/bin:$PATH\"' >> ~/.bashrc && source ~/.bashrc"
+    },
+    {
+      "symptom": "systemctl --user 명령 실패",
+      "cause": "XDG_RUNTIME_DIR 미설정 (SSH 세션 등)",
+      "fix": "export XDG_RUNTIME_DIR=/run/user/$(id -u)"
+    },
+    {
+      "symptom": "Cloud Sync 전송 실패",
+      "cause": "설정 파일의 worker_url 또는 api_key 미설정",
+      "fix": "nano ~/.local/share/WorkMonitor/cloud_sync_lite.json 에서 worker_url, api_key 설정 후 enabled: true"
+    }
+  ],
+
+  "claude_code_usage": {
+    "description": "이 파일은 Claude Code가 work-monitor 설치를 안내할 때 참조하는 스펙입니다",
+    "how_to_use": "Claude Code에서 이 URL을 WebFetch로 읽은 후 install_steps 를 순서대로 안내하세요",
+    "spec_url": "https://wizice.github.io/workmonitor-releases/install-spec.json"
+  }
+}
